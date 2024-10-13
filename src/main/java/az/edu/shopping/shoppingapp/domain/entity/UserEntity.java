@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -53,12 +52,23 @@ public class UserEntity {
 
     private String profileImageUrl;
 
+    @Enumerated(EnumType.STRING)
     private VerificationStatus isEmailVerified;
 
+    @Enumerated(EnumType.STRING)
     private VerificationStatus isPhoneVerified;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Address> address;
+    private List<AddressEntity> address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderEntity> orders;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ReviewEntity> reviews;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private BasketEntity cart;
 
 
 }
