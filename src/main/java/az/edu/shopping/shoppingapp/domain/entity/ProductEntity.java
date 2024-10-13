@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
-public class ProductEntity {
+public class ProductEntity extends AddressEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

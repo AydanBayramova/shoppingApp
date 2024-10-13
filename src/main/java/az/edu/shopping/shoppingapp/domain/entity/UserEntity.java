@@ -53,10 +53,10 @@ public class UserEntity {
     private String profileImageUrl;
 
     @Enumerated(EnumType.STRING)
-    private VerificationStatus isEmailVerified;
+    private VerificationStatus isEmailVerified=VerificationStatus.VERIFIED;
 
     @Enumerated(EnumType.STRING)
-    private VerificationStatus isPhoneVerified;
+    private VerificationStatus isPhoneVerified=VerificationStatus.VERIFIED;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<AddressEntity> address;
